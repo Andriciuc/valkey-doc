@@ -1,4 +1,4 @@
-The `XDEL` command emoves the specified entries from a stream, and returns the number of entries
+The `XDEL` command removes the specified entries from a stream, and returns the number of entries
 deleted.  This number may be less than the number of IDs passed to the command in
 the case where some of the specified IDs do not exist in the stream.
 
