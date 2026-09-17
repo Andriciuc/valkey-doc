@@ -128,10 +128,10 @@ Since atomic slot migration reuses much of Valkey's replication infrastructure, 
 ```
 
 However, migrating a hash slot that contains data requires additional permissions in Valkey 9.0.
-Unlike normal replication, where incoming data is applied by an internal superuser client that does not require write permissions, atomic slot migration pushes data to the target node using the authenticated replication user called `primaryuser`.
-During atomic slot migration, commands used to apply the migrated data on the target are executed through the authenticated replication connection and are subject to the replication user's ACL.
+Unlike normal replication, where incoming data is applied by an internal superuser client that does not require write permissions, atomic slot migration pushes data to the target node using the user configured by the `primaryuser` configuration parameter.
+During atomic slot migration, commands used to apply the migrated data on the target are executed through the authenticated replication connection and are subject to the configured replication user's ACL.
 
-The `primaryuser` needs the following ACL permissions for atomic slot migration to succeed:
+The user configured by `primaryuser` needs the following ACL permissions for atomic slot migration to succeed:
 
 ```bash
 +@write ~* -@dangerous +ping +select +psync +replconf +cluster|syncslots -flushall -flushdb -restore -restore-asking

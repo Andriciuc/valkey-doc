@@ -656,6 +656,8 @@ Valkey replicas require the following commands to be allowed on the primary inst
 
 * SYNC, PSYNC, REPLCONF, PING
 
+Although `SYNC` is deprecated, it remains available for legacy full synchronization scenarios. `PSYNC` is the preferred command for replication resynchronization.
+
 For cluster deployments, Valkey 9.0 introduces the Atomic Slot Migration feature, which requires additional permissions:
 
 * CLUSTER SYNCSLOTS, @write, SELECT
